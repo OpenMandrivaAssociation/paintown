@@ -1,0 +1,123 @@
+diff -urN paintown-3.5.0/CMakeLists.txt paintown-3.5.0-patched/CMakeLists.txt
+--- paintown-3.5.0/CMakeLists.txt	2011-09-14 11:45:13.000000000 +1100
++++ paintown-3.5.0-patched/CMakeLists.txt	2012-03-15 04:00:28.517861173 +1100
+@@ -255,29 +255,29 @@
+ add_subdirectory(${CMAKE_SOURCE_DIR}/src/util/network/hawknl)
+ 
+ #Source modules
+-add_library(base_module ${BASE_SRC})
+-add_library(level_module ${LEVEL_SRC})
+-add_library(factory_module ${FACTORY_SRC})
+-add_library(object_module ${OBJECT_SRC})
+-add_library(util_module ${UTIL_SRC})
+-add_library(loadpng_module ${LOADPNG_SRC})
+-add_library(menu_module ${MENU_SRC})
+-add_library(env_module ${ENV_SRC})
+-add_library(network_module ${NETWORK_SRC})
+-add_library(gui_module ${GUI_SRC})
++add_library(base_module STATIC ${BASE_SRC})
++add_library(level_module STATIC ${LEVEL_SRC})
++add_library(factory_module STATIC ${FACTORY_SRC})
++add_library(object_module STATIC ${OBJECT_SRC})
++add_library(util_module STATIC ${UTIL_SRC})
++add_library(loadpng_module STATIC ${LOADPNG_SRC})
++add_library(menu_module STATIC ${MENU_SRC})
++add_library(env_module STATIC ${ENV_SRC})
++add_library(network_module STATIC ${NETWORK_SRC})
++add_library(gui_module STATIC ${GUI_SRC})
+ # add_library(algif_module src/util/gif/algif.c src/util/gif/gif.c src/util/gif/lzw.c)
+ 
+ # GME Library
+-add_library(gme_module src/util/gme/Ay_Apu.cpp src/util/gme/Ay_Cpu.cpp src/util/gme/Ay_Emu.cpp src/util/gme/Blip_Buffer.cpp src/util/gme/Classic_Emu.cpp src/util/gme/Data_Reader.cpp src/util/gme/Dual_Resampler.cpp src/util/gme/Effects_Buffer.cpp src/util/gme/Fir_Resampler.cpp src/util/gme/Gb_Apu.cpp src/util/gme/Gb_Cpu.cpp src/util/gme/Gb_Oscs.cpp src/util/gme/Gbs_Emu.cpp src/util/gme/gme.cpp src/util/gme/Gme_File.cpp src/util/gme/Gym_Emu.cpp src/util/gme/Hes_Apu.cpp src/util/gme/Hes_Cpu.cpp src/util/gme/Hes_Emu.cpp src/util/gme/Kss_Cpu.cpp src/util/gme/Kss_Emu.cpp src/util/gme/Kss_Scc_Apu.cpp src/util/gme/M3u_Playlist.cpp src/util/gme/Multi_Buffer.cpp src/util/gme/Music_Emu.cpp src/util/gme/Nes_Apu.cpp src/util/gme/Nes_Cpu.cpp src/util/gme/Nes_Fme7_Apu.cpp src/util/gme/Nes_Namco_Apu.cpp src/util/gme/Nes_Oscs.cpp src/util/gme/Nes_Vrc6_Apu.cpp src/util/gme/Nsfe_Emu.cpp src/util/gme/Nsf_Emu.cpp src/util/gme/Sap_Apu.cpp src/util/gme/Sap_Cpu.cpp src/util/gme/Sap_Emu.cpp src/util/gme/Sms_Apu.cpp src/util/gme/Snes_Spc.cpp src/util/gme/Spc_Cpu.cpp src/util/gme/Spc_Dsp.cpp src/util/gme/Spc_Emu.cpp src/util/gme/Vgm_Emu.cpp src/util/gme/Vgm_Emu_Impl.cpp src/util/gme/Ym2413_Emu.cpp src/util/gme/Ym2612_Emu.cpp)
++add_library(gme_module STATIC src/util/gme/Ay_Apu.cpp src/util/gme/Ay_Cpu.cpp src/util/gme/Ay_Emu.cpp src/util/gme/Blip_Buffer.cpp src/util/gme/Classic_Emu.cpp src/util/gme/Data_Reader.cpp src/util/gme/Dual_Resampler.cpp src/util/gme/Effects_Buffer.cpp src/util/gme/Fir_Resampler.cpp src/util/gme/Gb_Apu.cpp src/util/gme/Gb_Cpu.cpp src/util/gme/Gb_Oscs.cpp src/util/gme/Gbs_Emu.cpp src/util/gme/gme.cpp src/util/gme/Gme_File.cpp src/util/gme/Gym_Emu.cpp src/util/gme/Hes_Apu.cpp src/util/gme/Hes_Cpu.cpp src/util/gme/Hes_Emu.cpp src/util/gme/Kss_Cpu.cpp src/util/gme/Kss_Emu.cpp src/util/gme/Kss_Scc_Apu.cpp src/util/gme/M3u_Playlist.cpp src/util/gme/Multi_Buffer.cpp src/util/gme/Music_Emu.cpp src/util/gme/Nes_Apu.cpp src/util/gme/Nes_Cpu.cpp src/util/gme/Nes_Fme7_Apu.cpp src/util/gme/Nes_Namco_Apu.cpp src/util/gme/Nes_Oscs.cpp src/util/gme/Nes_Vrc6_Apu.cpp src/util/gme/Nsfe_Emu.cpp src/util/gme/Nsf_Emu.cpp src/util/gme/Sap_Apu.cpp src/util/gme/Sap_Cpu.cpp src/util/gme/Sap_Emu.cpp src/util/gme/Sms_Apu.cpp src/util/gme/Snes_Spc.cpp src/util/gme/Spc_Cpu.cpp src/util/gme/Spc_Dsp.cpp src/util/gme/Spc_Emu.cpp src/util/gme/Vgm_Emu.cpp src/util/gme/Vgm_Emu_Impl.cpp src/util/gme/Ym2413_Emu.cpp src/util/gme/Ym2612_Emu.cpp)
+ 
+ #Script directory
+ add_subdirectory(${CMAKE_SOURCE_DIR}/src/paintown-engine/script)
+ 
+-add_library(game_module ${GAME_SRC})
+-add_library(mugen_module ${MUGEN_SRC})
+-add_library(platformer_module ${PLATFORMER_SRC})
+-add_library(trigger_module ${TRIGGER_SRC})
+-add_library(pcre_module src/util/pcre/pcre_chartables.c src/util/pcre/pcre_compile.c src/util/pcre/pcre_config.c src/util/pcre/pcre_dfa_exec.c src/util/pcre/pcre_exec.c src/util/pcre/pcre_fullinfo.c src/util/pcre/pcre_get.c src/util/pcre/pcre_globals.c src/util/pcre/pcre_info.c src/util/pcre/pcre_maketables.c src/util/pcre/pcre_newline.c src/util/pcre/pcre_ord2utf8.c src/util/pcre/pcreposix.c src/util/pcre/pcre_refcount.c src/util/pcre/pcre_study.c src/util/pcre/pcre_tables.c src/util/pcre/pcre_try_flipped.c src/util/pcre/pcre_ucd.c src/util/pcre/pcre_valid_utf8.c src/util/pcre/pcre_version.c src/util/pcre/pcre_xclass.c)
++add_library(game_module STATIC ${GAME_SRC})
++add_library(mugen_module STATIC ${MUGEN_SRC})
++add_library(platformer_module STATIC ${PLATFORMER_SRC})
++add_library(trigger_module STATIC ${TRIGGER_SRC})
++add_library(pcre_module STATIC src/util/pcre/pcre_chartables.c src/util/pcre/pcre_compile.c src/util/pcre/pcre_config.c src/util/pcre/pcre_dfa_exec.c src/util/pcre/pcre_exec.c src/util/pcre/pcre_fullinfo.c src/util/pcre/pcre_get.c src/util/pcre/pcre_globals.c src/util/pcre/pcre_info.c src/util/pcre/pcre_maketables.c src/util/pcre/pcre_newline.c src/util/pcre/pcre_ord2utf8.c src/util/pcre/pcreposix.c src/util/pcre/pcre_refcount.c src/util/pcre/pcre_study.c src/util/pcre/pcre_tables.c src/util/pcre/pcre_try_flipped.c src/util/pcre/pcre_ucd.c src/util/pcre/pcre_valid_utf8.c src/util/pcre/pcre_version.c src/util/pcre/pcre_xclass.c)
+ 
+ if (USE_SDL)
+     # IMAGE
+@@ -287,9 +287,9 @@
+     # Stretch
+     add_subdirectory(${CMAKE_SOURCE_DIR}/src/util/sdl/stretch)
+     # SPRIG
+-    add_library(sprig_module src/util/sdl/sprig/SPG_extended.c src/util/sdl/sprig/SPG_primitives.c src/util/sdl/sprig/SPG_misc.c src/util/sdl/sprig/SPG_rotation.c src/util/sdl/sprig/SPG_polygon.c src/util/sdl/sprig/SPG_surface.c)
++    add_library(sprig_module STATIC src/util/sdl/sprig/SPG_extended.c src/util/sdl/sprig/SPG_primitives.c src/util/sdl/sprig/SPG_misc.c src/util/sdl/sprig/SPG_rotation.c src/util/sdl/sprig/SPG_polygon.c src/util/sdl/sprig/SPG_surface.c)
+     # Mixer
+-    add_library(mixer_module src/util/sdl/mixer/music.c src/util/sdl/mixer/mixer.c src/util/sdl/mixer/music_ogg.c src/util/sdl/mixer/music_flac.c src/util/sdl/mixer/music_mad.c src/util/sdl/mixer/dynamic_ogg.c src/util/sdl/mixer/effect_position.c src/util/sdl/mixer/effects_internal.c src/util/sdl/mixer/effect_stereoreverse.c src/util/sdl/mixer/load_voc.c src/util/sdl/mixer/load_aiff.c src/util/sdl/mixer/wavestream.c src/util/sdl/mixer/load_ogg.c src/util/sdl/mixer/convert.cpp)
++    add_library(mixer_module STATIC src/util/sdl/mixer/music.c src/util/sdl/mixer/mixer.c src/util/sdl/mixer/music_ogg.c src/util/sdl/mixer/music_flac.c src/util/sdl/mixer/music_mad.c src/util/sdl/mixer/dynamic_ogg.c src/util/sdl/mixer/effect_position.c src/util/sdl/mixer/effects_internal.c src/util/sdl/mixer/effect_stereoreverse.c src/util/sdl/mixer/load_voc.c src/util/sdl/mixer/load_aiff.c src/util/sdl/mixer/wavestream.c src/util/sdl/mixer/load_ogg.c src/util/sdl/mixer/convert.cpp)
+ elseif (USE_ALLEGRO5)
+     # SFL
+     add_subdirectory(${CMAKE_SOURCE_DIR}/src/util/sfl)
+diff -urN paintown-3.5.0/src/paintown-engine/script/CMakeLists.txt paintown-3.5.0-patched/src/paintown-engine/script/CMakeLists.txt
+--- paintown-3.5.0/src/paintown-engine/script/CMakeLists.txt	2011-04-17 06:41:40.000000000 +1100
++++ paintown-3.5.0-patched/src/paintown-engine/script/CMakeLists.txt	2012-03-15 04:02:52.816117220 +1100
+@@ -37,7 +37,7 @@
+         string(REPLACE "src/paintown-engine/script/" "" src_file ${src_file})
+         list(APPEND SRC ${src_file})
+ endforeach(src_file ${SCRIPT_SRC})
+-add_library(script_module ${SRC})
++add_library(script_module STATIC ${SRC})
+ # target_link_libraries(script_module ${PY_LIBS} ${RUBY_LIBS})
+ target_link_libraries(script_module ${PY_LIBS})
+ 
+diff -urN paintown-3.5.0/src/util/dumb/CMakeLists.txt paintown-3.5.0-patched/src/util/dumb/CMakeLists.txt
+--- paintown-3.5.0/src/util/dumb/CMakeLists.txt	2007-10-31 06:18:35.000000000 +1000
++++ paintown-3.5.0-patched/src/util/dumb/CMakeLists.txt	2012-03-15 04:03:37.133194944 +1100
+@@ -88,5 +88,5 @@
+ # -------------------------------------------------------
+ # module
+ # -------------------------------------------------------
+-add_library (dumb_module ${DUMB_SRC})
++add_library (dumb_module STATIC ${DUMB_SRC})
+ 
+diff -urN paintown-3.5.0/src/util/network/hawknl/CMakeLists.txt paintown-3.5.0-patched/src/util/network/hawknl/CMakeLists.txt
+--- paintown-3.5.0/src/util/network/hawknl/CMakeLists.txt	2011-01-22 09:02:16.000000000 +1000
++++ paintown-3.5.0-patched/src/util/network/hawknl/CMakeLists.txt	2012-03-15 04:03:17.291160196 +1100
+@@ -40,5 +40,5 @@
+ # -------------------------------------------------------
+ # module
+ # -------------------------------------------------------
+-add_library (hawknl_module ${SRC})
++add_library (hawknl_module STATIC ${SRC})
+ 
+diff -urN paintown-3.5.0/src/util/sdl/image/CMakeLists.txt paintown-3.5.0-patched/src/util/sdl/image/CMakeLists.txt
+--- paintown-3.5.0/src/util/sdl/image/CMakeLists.txt	2011-10-03 08:40:12.000000000 +1100
++++ paintown-3.5.0-patched/src/util/sdl/image/CMakeLists.txt	2012-03-15 04:04:04.491242713 +1100
+@@ -44,5 +44,5 @@
+ # -------------------------------------------------------
+ # module
+ # -------------------------------------------------------
+-add_library (image_module ${SRC})
++add_library (image_module STATIC ${SRC})
+ 
+diff -urN paintown-3.5.0/src/util/sdl/stretch/CMakeLists.txt paintown-3.5.0-patched/src/util/sdl/stretch/CMakeLists.txt
+--- paintown-3.5.0/src/util/sdl/stretch/CMakeLists.txt	2011-02-02 05:20:33.000000000 +1000
++++ paintown-3.5.0-patched/src/util/sdl/stretch/CMakeLists.txt	2012-03-15 04:03:47.976213897 +1100
+@@ -30,5 +30,5 @@
+ # -------------------------------------------------------
+ # module
+ # -------------------------------------------------------
+-add_library (sdl_stretch_module ${SRC})
++add_library (sdl_stretch_module STATIC ${SRC})
+ 
+diff -urN paintown-3.5.0/src/util/sfl/CMakeLists.txt paintown-3.5.0-patched/src/util/sfl/CMakeLists.txt
+--- paintown-3.5.0/src/util/sfl/CMakeLists.txt	2011-01-16 11:11:14.000000000 +1000
++++ paintown-3.5.0-patched/src/util/sfl/CMakeLists.txt	2012-03-15 04:04:15.498261889 +1100
+@@ -70,5 +70,5 @@
+ # -------------------------------------------------------
+ # module
+ # -------------------------------------------------------
+-add_library (sfl_module ${SRC})
++add_library (sfl_module STATIC ${SRC})
+ 
