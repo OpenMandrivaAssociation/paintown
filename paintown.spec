@@ -2,7 +2,7 @@
 
 Name:		paintown
 Version:	3.5.0
-Release:	%mkrel 1
+Release:	2
 Summary:	2D Fighting Game
 Group:		Games/Arcade
 License:	GPLv2
@@ -12,12 +12,12 @@ Patch0:		paintown-3.5.0-static.patch
 Patch1:		paintown-3.5.0-libpng15.patch
 BuildRequires:	cmake
 BuildRequires:	python-devel
-BuildRequires:	zlib-devel
-BuildRequires:	png-devel
-BuildRequires:	freetype2-devel
-BuildRequires:	SDL-devel
-BuildRequires:	libvorbis-devel
-BuildRequires:	libogg-devel
+BuildRequires:	pkgconfig(zlib)
+BuildRequires:	pkgconfig(libpng)
+BuildRequires:	pkgconfig(freetype2)
+BuildRequires:	pkgconfig(sdl)
+BuildRequires:	pkgconfig(vorbis)
+BuildRequires:	pkgconfig(ogg)
 BuildRequires:	imagemagick
 
 %description
@@ -45,10 +45,10 @@ Features
 %patch0 -p1
 %patch1 -p1
 
-find data/ -type f -exec %__chmod 0644 {} \;
+find data/ -type f -exec chmod 0644 {} \;
 
 %build
-LIBSUFFIX=$(echo "%{_lib}" | %__sed 's|^lib||')
+LIBSUFFIX=$(echo "%{_lib}" | sed 's|^lib||')
 export CFLAGS="%{optflags} -Wall"
 export CXXFLAGS="$CFLAGS"
 
@@ -57,27 +57,26 @@ export CXXFLAGS="$CFLAGS"
 %make
 
 %install
-%__rm -rf %{buildroot}
-%__mkdir_p %{buildroot}%{_gamesbindir}
-%__install -m 755 build/bin/%{name} %{buildroot}%{_gamesbindir}/%{name}
-%__mkdir_p %{buildroot}%{_gamesdatadir}/%{name}
-%__cp -af data %{buildroot}%{_gamesdatadir}/%{name}
+mkdir -p %{buildroot}%{_gamesbindir}
+install -m 755 build/bin/%{name} %{buildroot}%{_gamesbindir}/%{name}
+mkdir -p %{buildroot}%{_gamesdatadir}/%{name}
+cp -af data %{buildroot}%{_gamesdatadir}/%{name}
 
-%__mkdir_p %{buildroot}%{_datadir}/pixmaps
-%__install -m 644 data/menu/%{name}.png %{buildroot}%{_datadir}/pixmaps
+mkdir -p %{buildroot}%{_datadir}/pixmaps
+install -m 644 data/menu/%{name}.png %{buildroot}%{_datadir}/pixmaps
 convert data/menu/%{name}.png -resize 48x48 %{buildroot}%{_datadir}/pixmaps/%{name}.png
 
 # wrapper script
-%__mkdir_p %{buildroot}%{_bindir}
-%__cat > %{buildroot}%{_bindir}/%{name} << EOF
+mkdir -p %{buildroot}%{_bindir}
+cat > %{buildroot}%{_bindir}/%{name} << EOF
 #!/bin/sh
 exec %{_gamesbindir}/paintown -d %{_gamesdatadir}/%{name}/data
 EOF
-%__chmod +x %{buildroot}%{_bindir}/%{name}
+chmod +x %{buildroot}%{_bindir}/%{name}
 
 #menu
-%__mkdir_p %{buildroot}%{_datadir}/applications
-cat > %buildroot%{_datadir}/applications/%{name}.desktop <<EOF
+mkdir -p %{buildroot}%{_datadir}/applications
+cat > %{buildroot}%{_datadir}/applications/%{name}.desktop <<EOF
 [Desktop Entry]
 Name=PainTown
 Comment=2D Fighting Game
@@ -88,9 +87,6 @@ Terminal=false
 Categories=Game;ArcadeGame;
 EOF
 
-%clean
-%__rm -rf %{buildroot}
-
 %files 
 %doc README LEGAL LICENSE TODO scripting.txt
 %{_bindir}/%{name}
@@ -98,4 +94,11 @@ EOF
 %{_gamesbindir}/%{name}
 %{_gamesdatadir}/%{name}
 %{_datadir}/pixmaps/%{name}.png
+
+
+
+%changelog
+* Wed Mar 14 2012 Andrey Bondrov <abondrov@mandriva.org> 3.5.0-1
++ Revision: 785025
+- imported package paintown
 
