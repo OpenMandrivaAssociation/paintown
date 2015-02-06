@@ -2,7 +2,7 @@
 
 Name:		paintown
 Version:	3.5.0
-Release:	2
+Release:	3
 Summary:	2D Fighting Game
 Group:		Games/Arcade
 License:	GPLv2
