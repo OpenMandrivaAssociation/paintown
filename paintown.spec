@@ -6,7 +6,7 @@ Release:	3
 Summary:	2D Fighting Game
 Group:		Games/Arcade
 License:	GPLv2
-URL:		http://paintown.sourceforge.net/
+URL:		https://paintown.sourceforge.net/
 Source0:	http://paintown.sourceforge.net/%{name}-%{version}.tar.gz
 Patch0:		paintown-3.5.0-static.patch
 Patch1:		paintown-3.5.0-libpng15.patch
